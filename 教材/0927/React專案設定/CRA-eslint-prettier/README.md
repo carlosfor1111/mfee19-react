@@ -83,3 +83,13 @@ npm install --save-dev eslint-plugin-prettier prettier eslint-config-react-app e
         "source.fixAll.eslint": true
     }
 ```
+
+## 更新部份(2021/9/5)
+
+react 專案中的 ESLint 版本不足問題(需升級才能搭配eslint-plugin-prettier)：
+
+```sh
+yarn upgrade -R eslint
+```
+
+- https://github.com/prettier/eslint-plugin-prettier/issues/434
