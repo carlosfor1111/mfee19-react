@@ -1,8 +1,6 @@
 import React from 'react'
 import Logo from './logo.svg'
-import { debug, devUrl, prodUrl } from './config'
-
-const imgUrl = debug ? devUrl : prodUrl
+import { imgUrl } from './config'
 
 function App() {
   return (
