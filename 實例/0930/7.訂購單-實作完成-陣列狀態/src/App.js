@@ -35,21 +35,21 @@ const products = [
   },
 ]
 
-// const initState = () => {
-//   console.log(products)
-//   const array = []
-
-//   for (let i; i < products.length; i++) {
-//     array.push(1)
-//   }
-//   console.log(array)
-//   return array
-// }
+// 初始化狀態用的函式
+const initState = (array) => {
+  const state = []
+  for (let i = 0; i < array.length; i++) {
+    state.push(1)
+  }
+  return state
+}
 
 function App() {
   // 多樣產品狀態：陣列
   // ex. 三樣商品 -> [1,1,1]
-  const [counts, setCounts] = useState(Array(products.length).fill(1))
+  // 下面兩種方式均可
+  const [counts, setCounts] = useState(initState(products))
+  //const [counts, setCounts] = useState(Array(products.length).fill(1))
 
   // Summary
   // 計算目前所有的商品數量
