@@ -26,7 +26,7 @@ function LifecycleFC(props) {
 
   // 只模擬componentDidUpdate
   // 利用didMount狀態值來完整模擬
-  // eslint會有警告可以無視
+  // eslint會有警告(注意：不需要加入didMount狀態在依賴陣列中)
   useEffect(() => {
     if (didMount) {
       console.log('componentDidUpdate(模擬)', total)
