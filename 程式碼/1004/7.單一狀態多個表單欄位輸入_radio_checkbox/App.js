@@ -10,21 +10,42 @@ function App(props) {
     password: '',
     intro: '',
     gender: '',
+    likeList: [],
   })
 
   // radio - 專用元件
-  // RadioButton元件有作修改
+  // RadioButton元件有修改
   const genderOptions = ['男', '女', '不提供', '不確定']
+  // checkbox - 專用元件
+  // CheckBox 元件有修改
+  const fruitOptions = ['芒果', '西瓜', '芭樂', '香蕉']
 
   // 專門用來處理每個欄位的輸入用
   const handleFieldChange = (e) => {
-    // 1. 從原本的狀態物件拷貝新物件
-    // 2. 在拷貝的新物件上處理
+    const name = e.target.name
+    const value = e.target.value
+    const type = e.target.type
+
+    // 預設值為輸入值
+    let newValue = value
+
+    // checkbox為陣列值
+    if (type === 'checkbox') {
+      // toggle 切換
+      // 如果目前包含在這狀態陣列 -> 移出 / 如果沒包含在這狀態陣列中 -> 加入
+      newValue = fields[name].includes(value)
+        ? fields[name].filter((v, i) => {
+            return v !== value
+          })
+        : [...fields[name], value]
+    }
+
+    // 1. 從原本的狀態物件拷貝新物件 / 2. 在拷貝的新物件上處理
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
     // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%90%8D
     const updatedFields = {
       ...fields,
-      [e.target.name]: e.target.value,
+      [name]: newValue,
     }
 
     // 3. 設定回原狀態物件
@@ -44,8 +65,9 @@ function App(props) {
     console.log(formData.get('password'))
     console.log(formData.get('intro'))
     console.log(formData.get('gender')) //只需要一個值
+    console.log(formData.getAll('likeList')) //需要所有值
 
-    // ex. 用fetch api/axios送到伺服器
+    // ex. 以下用fetch api/axios送到伺服器
   }
 
   return (
@@ -91,11 +113,24 @@ function App(props) {
         {genderOptions.map((v, i) => {
           return (
             <RadioButton
+              key={i}
               name="gender"
+              value={v}
+              onChange={handleFieldChange}
+              checked={fields.gender === v}
+            />
+          )
+        })}
+        <br />
+        <label>喜好</label>
+        {fruitOptions.map((v, i) => {
+          return (
+            <CheckBox
+              name="likeList"
               key={i}
               value={v}
-              checkedValue={fields.gender}
-              setCheckedValue={handleFieldChange}
+              onChange={handleFieldChange}
+              checked={fields.likeList.includes(v)}
             />
           )
         })}
