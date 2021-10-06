@@ -9,6 +9,7 @@ function App() {
   const buttonRef = useRef()
 
   // didMount+didUpdate
+  // 與狀態更動要互動的整合
   useEffect(() => {
     //jquery的程式碼需要寫在這裡，確保dom元素已經出現在網頁上
     // 移除原本的事件
