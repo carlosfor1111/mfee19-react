@@ -34,7 +34,7 @@ function ProductFC(props) {
   //   price: 300,
   // }]
   const [products, setProducts] = useState([])
-  // 為了要切換載入動畫提示
+  // 切換載入動畫提示的旗標
   const [isLoading, setIsLoading] = useState(true)
 
   // didMount
@@ -51,12 +51,14 @@ function ProductFC(props) {
     }, 2000)
   }, [])
 
+  // 載入的css動畫
   const spinner = (
     <div className="spinner-border text-primary" role="status">
       <span className="sr-only">Loading...</span>
     </div>
   )
 
+  // 要呈現的資料
   const display = (
     <ul>
       {products.map((v, i) => {
