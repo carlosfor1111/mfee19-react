@@ -101,7 +101,7 @@ Switch元件通常會包裹Route元件，因為路由表的使用方式是用對
 
 ### 以Link取代a
 
-> 注意：使用`a`與`href`有可能會導致頁面刷新，元件會重新回恢初始狀態，導致應用程式的運作失常，所以請儘可能用Link元件
+> 注意：使用`a`與`href`有可能會導致頁面刷新，元件會重新回復初始狀態，導致應用程式的運作失常，所以請儘可能用Link元件
 
 `a`元素與`href`屬性是網站應用中的連結網頁用元素，Link元件是React Router中用來取代a的元件。
 
@@ -144,7 +144,7 @@ Link元件中除了可以像a元素中，使用id、title、className等屬性�
 
 > 註：函式型/類別型元件通用的方式
 
-太深層的子元件得不到React Router的屬性值時使用。要綁入props三個屬性值(match, history, loaction)必定要加上。
+深層的子元件得不到React Router的屬性值時使用。要綁入props三個屬性值(match, history, loaction)必定要加上。
 
 範例:
 
