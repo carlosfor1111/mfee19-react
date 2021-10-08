@@ -5,6 +5,9 @@ import { Link, withRouter } from 'react-router-dom'
 import UserOrder from './UserOrder'
 import UserProfile from './UserProfile'
 
+// 預設出現的文字元件
+const Default = () => <>會員管理區域</>
+
 function UserAdminIndex(props) {
   console.log(props)
 
@@ -15,13 +18,11 @@ function UserAdminIndex(props) {
     profile: UserProfile,
   }
 
-  // 自訂元件需要大寫
   // 動態元件jsx標記的語法
-  // 預設出現的文字元件
-  // () => <>會員管理區域</>
+  // 自訂元件需要大寫
   const Component = props.match.params.task
     ? tasks[props.match.params.task]
-    : () => <>會員管理區域</>
+    : Default
 
   return (
     <>
@@ -36,13 +37,13 @@ function UserAdminIndex(props) {
                 <Link to="/admin/user/profile">個人資料管理</Link>
               </li>
               <li>
-                <Link to="/admin/user/profile">大頭照管理</Link>
+                <Link to="/admin/user/avtar">大頭照管理</Link>
               </li>
               <li>
-                <Link to="/admin/user/profile">密碼管理</Link>
+                <Link to="/admin/user/password">密碼管理</Link>
               </li>
               <li>
-                <Link to="/admin/user/profile">我的最愛管理</Link>
+                <Link to="/admin/user/fav">我的最愛管理</Link>
               </li>
             </ul>
           </div>
